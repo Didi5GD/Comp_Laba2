@@ -14,20 +14,33 @@ namespace Comp_Laba1
 {
     public partial class Form1 : Form
     {
-        MenuWork menuW;
         List<DocumentTab> documents = new List<DocumentTab>();
         DocumentTab currentDocument;
         int nextNewFileNumber = 2;
-
+        private RichTextBoxEditOperations editOps;
 
         public Form1()
         {
             InitializeComponent();
-            menuW = new MenuWork(richTextBox1, richTextBox2);
+            editOps = new RichTextBoxEditOperations(richTextBox1);
             documents.Add(new DocumentTab("File1"));
-            
             currentDocument = documents[0];
             UpdateOpenFilesMenu();
+            this.FormClosing += Form1_FormClosing;
+        }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Вы действительно хотите закрыть программу?\n Точно все сохранили?",
+                "Подтверждение закрытия",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void CreateNewDocument()
@@ -356,6 +369,88 @@ namespace Comp_Laba1
         private void пToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             SaveFile();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form f = new Form2();
+            f.Visible = true;
+        }
+
+        private void отменитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editOps.Undo();
+        }
+
+        private void пToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            editOps.Undo();
+        }
+
+        private void повторитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editOps.Redo();
+        }
+
+        private void пToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            editOps.Redo();
+        }
+
+        private void вырезатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editOps.Cut();
+        }
+
+        private void пToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            editOps.Cut();
+        }
+
+        private void пToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            editOps.Copy();
+        }
+
+        private void копироватьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editOps.Copy();
+        }
+
+        private void вставToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editOps.Paste();
+        }
+
+        private void пToolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            editOps.Paste();
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editOps.Delete();
+        }
+
+        private void выделитьВсеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editOps.SelectAll();
+        }
+
+        private void правкаToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void пToolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void пToolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            Form f = new Form2();
+            f.Visible = true;
         }
     }
 }

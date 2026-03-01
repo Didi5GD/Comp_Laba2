@@ -41,27 +41,5 @@ namespace Comp_Laba1
                 IsModified = true;
             }
         }
-
-        public bool Undo(ref string text, ref int cursorPosition)
-        {
-            if (CurrentVersionIndex <= 0) return false;
-            CurrentVersionIndex--;
-            text = TextContent.Substring(0, CurrentVersionIndex);
-            cursorPosition = CurrentVersionIndex;
-            CanRedo = true;
-            return true;
-        }
-
-        public bool Redo(ref string text, ref int cursorPosition)
-        {
-            if (!CanRedo || CurrentVersionIndex >= TextContent.Length) return false;
-            CurrentVersionIndex++;
-            text = TextContent.Substring(0, CurrentVersionIndex);
-            cursorPosition = CurrentVersionIndex;
-            if (CurrentVersionIndex >= TextContent.Length)
-                CanRedo = false;
-
-            return true;
-        }
     }
 }
