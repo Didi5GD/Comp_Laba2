@@ -402,8 +402,9 @@
             // вызовСправкиToolStripMenuItem
             // 
             this.вызовСправкиToolStripMenuItem.Name = "вызовСправкиToolStripMenuItem";
-            this.вызовСправкиToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.вызовСправкиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.вызовСправкиToolStripMenuItem.Text = "Вызов справки";
+            this.вызовСправкиToolStripMenuItem.Click += new System.EventHandler(this.вызовСправкиToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 

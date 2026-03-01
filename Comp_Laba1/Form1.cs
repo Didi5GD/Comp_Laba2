@@ -449,7 +449,7 @@ namespace Comp_Laba1
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CloseCurrentDocument();
+            this.Close();
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -535,7 +535,7 @@ namespace Comp_Laba1
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            editOps.Delete();
+            CloseCurrentDocument();
         }
 
         private void выделитьВсеToolStripMenuItem_Click(object sender, EventArgs e)
@@ -572,6 +572,12 @@ namespace Comp_Laba1
         private void сброситьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TextSizeManager.ResetSize();
+        }
+
+        private void вызовСправкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string url = "https://docs.google.com/document/d/1Rzmagq5oPo1kBg_uRBE7TA7xVFDxVzWDO_y2QE76Ows/edit?usp=sharing";
+            System.Diagnostics.Process.Start(url);
         }
     }
 }

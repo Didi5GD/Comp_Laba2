@@ -90,16 +90,6 @@ namespace Comp_Laba1
             }
         }
 
-        public void Delete()
-        {
-            if (richTextBox.SelectionLength > 0)
-            {
-                int start = richTextBox.SelectionStart;
-                int length = richTextBox.SelectionLength;
-                richTextBox.Text = richTextBox.Text.Remove(start, length);
-                richTextBox.SelectionStart = start;
-            }
-        }
         public void SelectAll()
         {
             richTextBox.SelectAll();
