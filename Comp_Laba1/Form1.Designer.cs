@@ -76,6 +76,10 @@
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.file1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.размерТекстаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.увеличитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.уменьшитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сброситьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -331,7 +335,8 @@
             this.методАнализаToolStripMenuItem,
             this.тестовыйПримерToolStripMenuItem,
             this.списокЛитературыToolStripMenuItem,
-            this.исходныйКодПрограммыToolStripMenuItem});
+            this.исходныйКодПрограммыToolStripMenuItem,
+            this.размерТекстаToolStripMenuItem});
             this.текстToolStripMenuItem1.Name = "текстToolStripMenuItem1";
             this.текстToolStripMenuItem1.Size = new System.Drawing.Size(72, 26);
             this.текстToolStripMenuItem1.Text = "Текст";
@@ -489,6 +494,37 @@
             this.richTextBox2.WordWrap = false;
             this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             // 
+            // размерТекстаToolStripMenuItem
+            // 
+            this.размерТекстаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.увеличитьToolStripMenuItem,
+            this.уменьшитьToolStripMenuItem,
+            this.сброситьToolStripMenuItem});
+            this.размерТекстаToolStripMenuItem.Name = "размерТекстаToolStripMenuItem";
+            this.размерТекстаToolStripMenuItem.Size = new System.Drawing.Size(314, 26);
+            this.размерТекстаToolStripMenuItem.Text = "Размер текста";
+            // 
+            // увеличитьToolStripMenuItem
+            // 
+            this.увеличитьToolStripMenuItem.Name = "увеличитьToolStripMenuItem";
+            this.увеличитьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.увеличитьToolStripMenuItem.Text = "Увеличить";
+            this.увеличитьToolStripMenuItem.Click += new System.EventHandler(this.увеличитьToolStripMenuItem_Click);
+            // 
+            // уменьшитьToolStripMenuItem
+            // 
+            this.уменьшитьToolStripMenuItem.Name = "уменьшитьToolStripMenuItem";
+            this.уменьшитьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.уменьшитьToolStripMenuItem.Text = "Уменьшить";
+            this.уменьшитьToolStripMenuItem.Click += new System.EventHandler(this.уменьшитьToolStripMenuItem_Click);
+            // 
+            // сброситьToolStripMenuItem
+            // 
+            this.сброситьToolStripMenuItem.Name = "сброситьToolStripMenuItem";
+            this.сброситьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.сброситьToolStripMenuItem.Text = "Сбросить";
+            this.сброситьToolStripMenuItem.Click += new System.EventHandler(this.сброситьToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -566,6 +602,10 @@
         private System.Windows.Forms.ToolStripMenuItem пToolStripMenuItem9;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.ToolStripMenuItem file1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem размерТекстаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem увеличитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem уменьшитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сброситьToolStripMenuItem;
     }
 }
 

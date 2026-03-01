@@ -18,6 +18,7 @@ namespace Comp_Laba1
         DocumentTab currentDocument;
         int nextNewFileNumber = 2;
         private RichTextBoxEditOperations editOps;
+        private LineNumberManager lineNumberManager;
 
         public Form1()
         {
@@ -27,6 +28,12 @@ namespace Comp_Laba1
             currentDocument = documents[0];
             UpdateOpenFilesMenu();
             this.FormClosing += Form1_FormClosing;
+            TextSizeManager.TextSizeChanged += (s, e) => UpdateTextSize();
+            UpdateTextSize();
+            SetupLineNumbering();
+            this.AllowDrop = true;
+            this.DragEnter += Form1_DragEnter;
+            this.DragDrop += Form1_DragDrop;
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -42,6 +49,105 @@ namespace Comp_Laba1
                 e.Cancel = true;
             }
         }
+
+        private void Form1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void Form1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            if (files != null && files.Length > 0)
+            {
+                foreach (string filePath in files)
+                {
+                    OpenDroppedFile(filePath);
+                }
+            }
+        }
+
+        private void OpenDroppedFile(string filePath)
+        {
+            string extension = Path.GetExtension(filePath).ToLower();
+
+            if (extension == ".txt" || extension == ".rtf")
+            {
+                try
+                {
+                    string fileName = Path.GetFileName(filePath);
+                    string fileContent = File.ReadAllText(filePath, Encoding.UTF8);
+                    var newDoc = new DocumentTab(fileName, filePath);
+                    newDoc.TextContent = fileContent;
+                    newDoc.IsModified = false;
+
+                    documents.Add(newDoc);
+                    SwitchToDocument(newDoc);
+                    UpdateOpenFilesMenu();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при открытии файла {filePath}:\n{ex.Message}",
+                                    "Ошибка",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Файл {Path.GetFileName(filePath)} не является текстовым файлом.",
+                                "Неподдерживаемый формат",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
+        }
+
+        private void SetupLineNumbering()
+        {
+            richTextBox1.WordWrap = true; 
+
+            richTextBox2.ReadOnly = true;
+            richTextBox2.BackColor = Color.LightGray;
+            richTextBox2.WordWrap = false;
+
+            lineNumberManager = new LineNumberManager(richTextBox1, richTextBox2);
+            this.Resize += (s, e) => AdjustLineNumberWidth();
+        }
+
+        private void AdjustLineNumberWidth()
+        {
+            if (lineNumberManager != null)
+            {
+                lineNumberManager.AdjustWidth();
+            }
+        }
+
+        private void UpdateTextSize()
+        {
+            richTextBox1.Font = new Font(richTextBox1.Font.FontFamily,
+                                          TextSizeManager.CurrentSize,
+                                          richTextBox1.Font.Style);
+
+            dataGridView1.Font = new Font(dataGridView1.Font.FontFamily,
+                                           TextSizeManager.CurrentSize,
+                                           dataGridView1.Font.Style);
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font =
+                new Font(dataGridView1.Font.FontFamily,
+                         TextSizeManager.CurrentSize,
+                         FontStyle.Bold);
+
+         
+        }
+
 
         private void CreateNewDocument()
         {
@@ -451,6 +557,21 @@ namespace Comp_Laba1
         {
             Form f = new Form2();
             f.Visible = true;
+        }
+
+        private void увеличитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TextSizeManager.IncreaseSize();
+        }
+
+        private void уменьшитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TextSizeManager.DecreaseSize();
+        }
+
+        private void сброситьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TextSizeManager.ResetSize();
         }
     }
 }
