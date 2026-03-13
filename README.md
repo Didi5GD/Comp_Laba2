@@ -1,4 +1,3 @@
-<img width="692" height="1701" alt="Комп_2Лаба drawio" src="https://github.com/user-attachments/assets/96e33f8f-ca06-4f5f-908b-59df9081b89a" />
 Лабораторная работа 2. Разработка лексического анализатора (сканера)
 Автор: Горащенко Дарья Романовна, факультет АВТФ,курс 3, семестр 6, группа АВТ-313.
 Постановка задачи: сделать сканер для куска кода на языке PHP. Кусок кода представляет собой  Условный оператор if-else.
@@ -39,4 +38,5 @@ else{
 если ничего из этого то ERROR.
 
 Диаграмма состояний и тестовые примеры тут: 
-https://docs.google.com/document/d/1HTpWhnjlLQoAf9oVmuJW772sqPhInXj-8czsPA2-xQo/edit?tab=t.0
+<img width="692" height="1701" alt="Комп_2Лаба drawio" src="https://github.com/user-attachments/assets/96e33f8f-ca06-4f5f-908b-59df9081b89a" />
+
