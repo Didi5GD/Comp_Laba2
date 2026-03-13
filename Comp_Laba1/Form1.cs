@@ -253,7 +253,7 @@ namespace Comp_Laba1
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = @"D:\Универ\6 семестр\Компиляторы\Comp_Laba1";
+                
 
                 openFileDialog.Title = "Открыть текстовый файл";
                 openFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
