@@ -253,7 +253,6 @@ namespace Comp_Laba1
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                //ffff
 
                 openFileDialog.Title = "Открыть текстовый файл";
                 openFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
